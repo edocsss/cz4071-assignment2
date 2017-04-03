@@ -1,16 +1,16 @@
 package model;
 
-import java.util.ArrayList;
-
 public class Node {
-    private int id;
-    private String label;
-    private ArrayList<Integer> edgeList;
+    private int id, dist;
 
-    public Node(int id, String label) {
-        this.id = id;
-        this.label = label;
-        this.edgeList = new ArrayList<>();
+    public Node(int n){
+        id = n;
+        dist = 1;
+    }
+
+    public Node(int n, int d){
+        id = n;
+        dist = d;
     }
 
     public int getId() {
@@ -21,32 +21,11 @@ public class Node {
         this.id = id;
     }
 
-    public ArrayList<Integer> getEdgeList() {
-        return edgeList;
+    public int getDist() {
+        return dist;
     }
 
-    public void setEdgeList(ArrayList<Integer> edgeList) {
-        this.edgeList = edgeList;
-    }
-
-    public void addEdge(int targetNodeId) {
-        this.edgeList.add(targetNodeId);
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Node: " + this.id);
-        sb.append("\n");
-        sb.append("Label: " + this.label);
-        sb.append("\n");
-        sb.append("Edges: ");
-
-        for (int targetNodeId: this.edgeList) {
-            sb.append(targetNodeId + " ");
-        }
-
-        sb.append("\n");
-        return sb.toString();
+    public void setDist(int dist) {
+        this.dist = dist;
     }
 }
