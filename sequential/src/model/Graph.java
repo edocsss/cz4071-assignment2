@@ -18,7 +18,7 @@ public class Graph {
     public static Graph readNetwork() {
         Graph g = new Graph();
         for (int i = 0; i < Graph.N_NODES; ++i){
-            g.adjacencyList.add(new ArrayList<>());
+            g.adjacencyList.add(new ArrayList<Node>());
         }
 
         try {
