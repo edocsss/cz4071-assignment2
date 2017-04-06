@@ -24,9 +24,20 @@ Note that step 1-3 is already done for page_rank, connected_component and shorte
 `add_graphlab_executable(executable_name source_file.cpp)`
 4. Cd to home directory of graphlab, run `./configure --no-mpi`.
 5. Create the app executable: `cd release/apps/[package_name] && make -j4`
-7. Running on single_node: under release/apps/[package_name], run the executable  
+6. Running on single_node: under release/apps/[package_name], run the executable  
     `executable_name --graph=[input_file] --format [input_format]`
     - Note that input_file can be placed in any path
     - For bfs, it can accept `--source arg` input
     - Format can be adjacency list (`adj`), edge list (`tsv`), snap (`snap`).  
     Example: `page_rank --graph=/data/grpNT06s/input.tsv --format tsv`
+
+## Running Custom Code (Distributed)
+
+1. Source setup.sh from main graphlab distributed home
+2. Same steps as step 1-3 of Single Node
+3. Cd to home directory of graphlab, run `./configure`
+4. Same step as step 5 of Single Node
+5. Sync the app executables on all the nodes, run `$GRAPHLAB_HOME/scripts/custom-sync.sh`
+6. Running on distributed node: under release/apps/[package_name] run the executable via rpc (supposedly by openmpi, but it does not work unfortunately)  
+    `python $GRAPHLAB_HOME/scripts/rpc_exec.py -n [num_of_cluster] -f ~/machines executable_name --graph [input_file] --format [input_format]`  
+    Example: `python $GRAPHLAB_HOME/scripts/rpcexec.py -n 4 -f ~/machines ./conn_comp --graph input_graph.tsv --format adj`
