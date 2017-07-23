@@ -19,10 +19,6 @@ public class Edge{
         return nodeA;
     }
 
-    public void setNodeA(int nodeA) {
-        this.nodeA = nodeA;
-    }
-
     public int getNodeB() {
         return nodeB;
     }

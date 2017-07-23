@@ -19,7 +19,7 @@ public class app {
 
         System.out.println("Start time: " + startTime + " End time: " + endTime + " Duration: " + (endTime - startTime));
         System.out.println("Used memory: " + ((Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()) / 1024));
-        System.out.println("Diameter: " + result);
+        System.out.println("Result: " + result);
 
     }
 }
